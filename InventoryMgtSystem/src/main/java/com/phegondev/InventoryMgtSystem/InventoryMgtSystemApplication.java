@@ -11,5 +11,6 @@ public class InventoryMgtSystemApplication {
 	}
 	
 	// test push
+	// test pull
 
 }
