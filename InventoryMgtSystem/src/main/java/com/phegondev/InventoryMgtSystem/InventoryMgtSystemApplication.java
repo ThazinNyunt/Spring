@@ -9,5 +9,7 @@ public class InventoryMgtSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(InventoryMgtSystemApplication.class, args);
 	}
+	
+	// test
 
 }
