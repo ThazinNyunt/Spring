@@ -10,6 +10,6 @@ public class InventoryMgtSystemApplication {
 		SpringApplication.run(InventoryMgtSystemApplication.class, args);
 	}
 	
-	// test
+	// test push
 
 }
