@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.phegondev.InventoryMgtSystem.dtos.Response;
 import com.phegondev.InventoryMgtSystem.dtos.UserDTO;
+import com.phegondev.InventoryMgtSystem.models.User;
 import com.phegondev.InventoryMgtSystem.services.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -53,5 +54,11 @@ public class UserController {
 	public ResponseEntity<Response> getUserAndTransaction(@PathVariable Long userId) {
 		
 		return ResponseEntity.ok(userService.getUserTransaction(userId));
+	}
+	
+	@GetMapping("/current")
+	public ResponseEntity<User> getCurrentUser() {
+
+		return ResponseEntity.ok(userService.getCurrentLoggedInUser());
 	}
 }
