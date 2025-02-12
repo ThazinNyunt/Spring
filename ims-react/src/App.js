@@ -7,6 +7,8 @@ import CategoryPage from "./pages/CategoryPage";
 import SupplierPage from "./pages/SupplierPage";
 import AddEditSupplierPage from "./pages/AddEditSupplierPage";
 import ProductPage from "./pages/ProductPage";
+import AddEditProductPage from "./pages/AddEditProductPage";
+import PurchasePage from "./pages/PurchasePage";
 
 function App() {
   return (
@@ -20,10 +22,13 @@ function App() {
         <Route path="/supplier" element={<AdminRoute element={<SupplierPage/>}/>}/>
         <Route path="/add-supplier" element={<AdminRoute element={<AddEditSupplierPage/>}/>}/>
         <Route path="/edit-supplier/:supplierId" element={<AdminRoute element={<AddEditSupplierPage/>}/>}/>
+
         <Route path="/product" element={<AdminRoute element={<ProductPage/>}/>}/>
+        <Route path="/add-product" element={<AdminRoute element={<AddEditProductPage/>}/>}/>
+        <Route path="/edit-product/:productId" element={<AdminRoute element={<AddEditProductPage/>}/>}/>
 
-        
-
+                {/* Admin and Manager Route */}
+        <Route path="/purchase" element={<ProtectedRoute element={<PurchasePage/>}/>}/>
       </Routes>
     </Router>
   )

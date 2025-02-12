@@ -13,7 +13,7 @@ const ProductPage = () => {
   //Pagination Set-Up
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const itemsPerPage = 1;
+  const itemsPerPage = 5;
 
   useEffect(() => {
     const getProducts = async () => {
@@ -91,9 +91,9 @@ const ProductPage = () => {
 
                 <div className="product-info">
                     <h3 className="name">{product.name}</h3>
-                    <p className="sku">Sku: {product.su}</p>
+                    <p className="sku">Sku: {product.sku}</p>
                     <p className="price">Price: {product.price}</p>
-                    <p className="quantity">Quantity: {product.stockQuantity}</p>
+                    <p className="quantity">Quantity: {product.stockQuantiy}</p>
                 </div>
 
                 <div className="product-actions">

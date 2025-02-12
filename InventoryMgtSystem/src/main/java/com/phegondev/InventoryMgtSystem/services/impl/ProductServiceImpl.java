@@ -34,6 +34,8 @@ public class ProductServiceImpl implements ProductService {
 	
 	private static final String IMAGE_DIRECTORY = System.getProperty("user.dir") + "/proudct-images/";
 	
+	// After your front-end is setup change the image directory to the front-end you are using
+	private static final String IMAGE_DIRECTORY_2= "D:/Java/workplace/project/Spring/ims-react/public/products/";
 	
 	@Override
 	public Response saveProduct(ProductDTO productDTO, MultipartFile imageFile) {
@@ -53,7 +55,8 @@ public class ProductServiceImpl implements ProductService {
 		
 		if(imageFile != null && !imageFile.isEmpty()) {
 			log.info("Image file exist");
-			String imagePath = saveImage(imageFile);
+//			String imagePath = saveImage(imageFile); // use this when you haven't setup your front-end
+			String imagePath = saveImage2(imageFile); // use this whey you are setup your front-end locally but haven't to productions
 			productToSave.setImageUrl(imagePath);
 		}
 		
@@ -76,7 +79,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		// check if image is associated with the product to update and upload
 		if(imageFile != null && !imageFile.isEmpty()) {
-			String imagePath = saveImage(imageFile);
+			String imagePath = saveImage2(imageFile);
 			existingProduct.setImageUrl(imagePath);
 		}
 		
@@ -180,7 +183,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 
-
+	// This saved to the root of your project
 	private String saveImage(MultipartFile imageFile) {
 		
 		// validate image and check if it is greater than 1GB
@@ -210,6 +213,39 @@ public class ProductServiceImpl implements ProductService {
 		}
 		
 		return imagePath;
+	}
+	
+	// This saved image to the public folder in your front-end
+	// use this if you have setup your front-end 
+	private String saveImage2(MultipartFile imageFile) {
+		
+		// validate image and check if it is greater than 1GB
+		if(!imageFile.getContentType().startsWith("image/") || imageFile.getSize() > 1024 * 1024 * 1024) {
+			throw new IllegalArgumentException("Only image files under 1GB is allowed.");
+		}
+		
+		// create the directory if it doesn't exist
+		File directory = new File(IMAGE_DIRECTORY_2);
+		
+		if(!directory.exists()) {
+			directory.mkdir();
+			log.info("Directory was created");
+		}
+		
+		// generate unique file name for the image
+		String uniqueFileName = UUID.randomUUID() + "-" + imageFile.getOriginalFilename();
+		
+		// Get the absolute path of the image
+		String imagePath = IMAGE_DIRECTORY_2 + uniqueFileName;
+		
+		try {
+			File destinationFile = new File(imagePath);
+			imageFile.transferTo(destinationFile); // we are writing the image to this folder
+		} catch(Exception e) {
+			throw new IllegalArgumentException("Error saving Image:" + e.getMessage());
+		}
+		
+		return "products/" + uniqueFileName;
 	}
 
 }
