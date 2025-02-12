@@ -34,7 +34,7 @@ public class ProductController {
 			@RequestParam("name")String name,
 			@RequestParam("sku")String sku,
 			@RequestParam("price")BigDecimal price,
-			@RequestParam("stockQuantity")Integer stockQuantity,
+			@RequestParam("stockQuantiy")Integer stockQuantiy,
 			@RequestParam("categoryId")Long categoryId,
 			@RequestParam(value = "description", required = false)String description
 			){
@@ -43,7 +43,7 @@ public class ProductController {
 		productDTO.setName(name);
 		productDTO.setSku(sku);
 		productDTO.setPrice(price);
-		productDTO.setStockQuantiy(stockQuantity);
+		productDTO.setStockQuantiy(stockQuantiy);
 		productDTO.setCategoryId(categoryId);
 		productDTO.setDescription(description);
 		
@@ -58,7 +58,7 @@ public class ProductController {
 			@RequestParam(value = "name", required = false)String name,
 			@RequestParam(value = "sku", required = false)String sku,
 			@RequestParam(value = "price", required = false)BigDecimal price,
-			@RequestParam(value = "stockQuantity", required = false)Integer stockQuantity,
+			@RequestParam(value = "stockQuantiy", required = false)Integer stockQuantiy,
 			@RequestParam(value = "categoryId", required = false)Long categoryId,
 			@RequestParam(value = "description", required = false)String description,
 			@RequestParam(value = "productId")Long productId
@@ -69,7 +69,7 @@ public class ProductController {
 		productDTO.setName(name);
 		productDTO.setSku(sku);
 		productDTO.setPrice(price);
-		productDTO.setStockQuantiy(stockQuantity);
+		productDTO.setStockQuantiy(stockQuantiy);
 		productDTO.setCategoryId(categoryId);
 		productDTO.setDescription(description);
 		
