@@ -45,7 +45,7 @@ public class CategoryServiceImpl implements CategoryService {
     public Response getAllCategories() {
         List<Category> categories = categoryRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
 
-        categories.forEach(category -> category.setProducts(null));
+//        categories.forEach(category -> category.setProducts(null));
 
         List<CategoryDTO> categoryDTOList = modelMapper.map(categories, new TypeToken<List<CategoryDTO>>() {
         }.getType());
