@@ -1,9 +1,12 @@
 import axios from "axios";
 import CryptoJS from "crypto-js";
 
+// console.log(`Here: ${process.env.REACT_APP_API_URL}`);
+
 export default class ApiService {
 
-    static BASE_URL = "http://localhost:5050/api";
+    static BASE_URL = "http://localhost:8080/api";
+    // static BASE_URL = `${process.env.REACT_APP_API_URL}`;
     static ENCRYPTION_KEY = "phegon-dev-inventory";
 
 
